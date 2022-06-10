@@ -70,9 +70,8 @@ function search() {
       loc.innerText = `${data.location.region},${data.location.country}`;
       timezone.innerText = `UTC${data.location.timezone}`;
       isp.innerText = data.isp;
-      // ShowIpAdd.innerHTML = data.ip
       inp_alert.classList.add('d-none')
-      ShowIpAdd.classList.remove('d-none')
+      // ShowIpAdd.classList.remove('d-none')
     });
 
   fetch(
@@ -82,8 +81,8 @@ function search() {
       return res1.json();
     })
     .then((data1) => {
-      inp_alert.classList.add('d-none')
-      ShowIpAdd.classList.remove('d-none')
+      // inp_alert.classList.add('d-none')
+      // ShowIpAdd.classList.remove('d-none')
       // let newArry
       // if(!localStorage.getItem("IpAddress")){
       //   newArry = []

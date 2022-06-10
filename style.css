@@ -25,14 +25,12 @@
 
 .details{
   position: absolute;
-  top: 9rem;
+  top: 12rem;
   /* top: 20rem; */
   cursor: pointer;
   z-index: 1000;
 }
-.ipp{
-  margin-top: -5rem;
-}
+
 
 .input-group{
   width: auto;
@@ -58,14 +56,13 @@
   border-start-start-radius: 1rem;
 }
 #map{
-  /* margin-top: 4rem; */
   background-image: url("/images/GoogleMapTA.webp");
 }
 
 #show-ipAdd{
   margin-top: -5rem;
 }
-.show-ip{
+/* .show-ip{
   width: auto;
   overflow-x: scroll;
   height: 10rem;
@@ -73,9 +70,13 @@
   margin-top: -14rem;
   margin-left: 5rem;
   position: absolute;
-}
+} */
 
 
+
+/* #show-ipAdd::-webkit-scrollbar{
+  display: none;
+} */
 
 .show-ip::-webkit-scrollbar {
   display: none;

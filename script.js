@@ -4,16 +4,18 @@ const timezone = document.getElementById("timezone");
 const isp = document.getElementById("isp");
 const inp_alert = document.getElementById("inp-alert") 
 const ShowIpAdd = document.getElementById("show-ipAdd")
-showIps()
 
-function showIps(){
-  let p = ''
-  const ips = JSON.parse(localStorage.getItem("IpAddress"))
-  for(let ip of ips){
-    p+=`<p class="bg-dark text-light px-2 py-1 rounded-3">${ip}</p>`
-  }
-    ShowIpAdd.innerHTML = p
-  }
+
+
+
+// function showIps(){
+//   let p = ''
+//   const ips = JSON.parse(localStorage.getItem("IpAddress"))
+//   for(let ip of ips){
+//     p+=`<p class="bg-dark text-light px-2 py-1 rounded-2">${ip}</p>`
+//   }
+//     ShowIpAdd.innerHTML = p
+//   }
   
 
 //-----For map---------//
@@ -56,7 +58,8 @@ function search() {
 
 
   fetch(
-    `https://geo.ipify.org/api/v2/country?apiKey=at_3J5A9PokRUWVpXHZ3l4wirJ86CgsL&ipAddress=${searchElement.value}`
+    `https://geo.ipify.org/api/v2/country?apiKey=at_2FeF6VfpugiSp4sTEAndWdcyicken&ipAddress=${searchElement.value}`
+    // `https://geo.ipify.org/api/v2/country?apiKey=at_3J5A9PokRUWVpXHZ3l4wirJ86CgsL&ipAddress=${searchElement.value}`
   )
     .then((res) => {  
       return res.json();
@@ -71,7 +74,7 @@ function search() {
       inp_alert.classList.add('d-none')
       ShowIpAdd.classList.remove('d-none')
     });
-    
+
   fetch(
     `https://ipgeolocation.abstractapi.com/v1/?api_key=f62c08003cb646dcb698199c8a40cc6f&ip_address=${searchElement.value}`
   )
@@ -92,3 +95,15 @@ function search() {
       maps(data1.latitude, data1.longitude);  
     });
 }
+
+
+
+function showIps(){
+  let p = ''
+  const ips = JSON.parse(localStorage.getItem("IpAddress"))
+  for(let ip of ips){
+    p+=`<p class="bg-dark text-light px-2 py-1 rounded-2">${ip}</p>`
+  }
+    ShowIpAdd.innerHTML = p
+  }
+showIps()

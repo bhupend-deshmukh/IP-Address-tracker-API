@@ -113,9 +113,9 @@
     text-align: center;
   }
 
-  #map{
-    /* margin-top: 6rem !important; */
-  }
+  /* #map{
+    margin-top: 6rem !important;
+  } */
 
   @media (max-width: 500px){
 

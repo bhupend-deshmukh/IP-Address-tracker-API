@@ -1,5 +1,6 @@
 
 .main-container{
+  /* padding-bottom: 5rem; */
   background-image: url("./images/pattern-bg.png");
   background-size: 100%;
   font-family: 'Poppins', sans-serif;
@@ -57,16 +58,17 @@
   border-start-start-radius: 1rem;
 }
 #map{
+  /* margin-top: 4rem; */
   background-image: url("/images/GoogleMapTA.webp");
 }
 
+#show-ipAdd{
+  margin-top: -5rem;
+}
 .show-ip{
   width: auto;
   overflow-x: scroll;
   height: 10rem;
-  /* display: flex; */
-  /* flex-direction: column; */
-  /* align-items: center;  */
   background-color: white;
   margin-top: -14rem;
   margin-left: 5rem;
@@ -89,6 +91,7 @@
 }
 
 @media (max-width: 775px){
+
   .details{
     margin-top: 1.5rem!important;
     display: flex;
@@ -96,26 +99,34 @@
     width:30rem !important;
     justify-content: center;
     align-items: center;
-    
   }
+
   .d-class{
     border-bottom: 1px solid;
   }
+
   .media-cl{
     border: none !important;
   }
+
   .details p{
     text-align: center;
   }
+
   #map{
-    margin-top: 6rem !important;
+    /* margin-top: 6rem !important; */
   }
+
   @media (max-width: 500px){
+
     .details{
       width: 22rem !important;
     }
+
     .input-group{
       width: 22rem !important;
     }   
+
   }
 }
+

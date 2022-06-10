@@ -4,23 +4,17 @@ const timezone = document.getElementById("timezone");
 const isp = document.getElementById("isp");
 const inp_alert = document.getElementById("inp-alert") 
 const ShowIpAdd = document.getElementById("show-ipAdd")
-
+showIps()
 
 function showIps(){
   let p = ''
   const ips = JSON.parse(localStorage.getItem("IpAddress"))
-  console.log(ips);
-  ips.forEach(ip => {
-      // const p = document.createElement("p")
-      // p.innerText = ip
-      p = p+`<p class="bg-dark text-light px-2 py-1 rounded-3">${ip}</p>`
-      // ShowIpAdd.appendChild(`<p>${ip}</p>`)
-      
-    });
-  // console.log(p);
-  ShowIpAdd.innerHTML = p
-}
-
+  for(let ip of ips){
+    p+=`<p class="bg-dark text-light px-2 py-1 rounded-3">${ip}</p>`
+  }
+    ShowIpAdd.innerHTML = p
+  }
+  
 
 //-----For map---------//
 
@@ -50,6 +44,17 @@ function search() {
     inp_alert.classList.remove('d-none')
     return
   } 
+  let newArry
+  if(!localStorage.getItem("IpAddress")){
+    newArry = []
+  }else{
+    newArry = JSON.parse(localStorage.getItem("IpAddress"))
+  }
+  newArry.push(searchElement.value)
+  localStorage.setItem("IpAddress", JSON.stringify(newArry))
+  showIps()
+
+
   fetch(
     `https://geo.ipify.org/api/v2/country?apiKey=at_3J5A9PokRUWVpXHZ3l4wirJ86CgsL&ipAddress=${searchElement.value}`
   )
@@ -59,13 +64,14 @@ function search() {
     .then((data) => {
       
       ipAddress.innerText = data.ip;
-      loc.innerText = `${data.location.region},${data.location.country}       `;
+      loc.innerText = `${data.location.region},${data.location.country}`;
       timezone.innerText = `UTC${data.location.timezone}`;
       isp.innerText = data.isp;
-      ShowIpAdd.innerHTML = data.ip
+      // ShowIpAdd.innerHTML = data.ip
       inp_alert.classList.add('d-none')
       ShowIpAdd.classList.remove('d-none')
     });
+    
   fetch(
     `https://ipgeolocation.abstractapi.com/v1/?api_key=f62c08003cb646dcb698199c8a40cc6f&ip_address=${searchElement.value}`
   )
@@ -73,18 +79,16 @@ function search() {
       return res1.json();
     })
     .then((data1) => {
-
-      let newArry
-      if(!localStorage.getItem("IpAddress")){
-        newArry = []
-      }else{
-        newArry = JSON.parse(localStorage.getItem("IpAddress"))
-      }
-
-      newArry.push(searchElement.value)
-      localStorage.setItem("IpAddress", JSON.stringify(newArry))
-      maps(data1.latitude, data1.longitude);
-      showIps() 
-      
+      inp_alert.classList.add('d-none')
+      ShowIpAdd.classList.remove('d-none')
+      // let newArry
+      // if(!localStorage.getItem("IpAddress")){
+      //   newArry = []
+      // }else{
+      //   newArry = JSON.parse(localStorage.getItem("IpAddress"))
+      // }
+      // newArry.push(searchElement.value)
+      // localStorage.setItem("IpAddress", JSON.stringify(newArry))
+      maps(data1.latitude, data1.longitude);  
     });
 }
